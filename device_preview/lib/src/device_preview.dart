@@ -398,7 +398,7 @@ class _DevicePreviewState extends State<DevicePreview> {
       ),
     );
 
-    if (!isEnabled) return widget.builder(context);
+    if (!isEnabled) widget.builder(context);
 
     final mediaQuery = MediaQuery.of(context);
     final device = context.select(
