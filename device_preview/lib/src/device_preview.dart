@@ -572,13 +572,13 @@ class _DevicePreviewState extends State<DevicePreview> {
                             data: background,
                             child: Container(
                               decoration: BoxDecoration(
-                                boxShadow: const [
+                                /*boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 20,
                                     color: Color(0xAA000000),
                                   ),
-                                ],
-                                borderRadius: borderRadius,
+                                ],*/
+                                //borderRadius: borderRadius,
                                 color: background.scaffoldBackgroundColor,
                               ),
                               child: ClipRRect(
@@ -587,10 +587,10 @@ class _DevicePreviewState extends State<DevicePreview> {
                                     ? Builder(
                                         builder: _buildPreview,
                                       )
-                                    : Builder(
+                                    : Container()/* WP removal Builder(
                                         key: _appKey,
                                         builder: widget.builder,
-                                      ),
+                                      ) */,
                               ),
                             ),
                           ),
