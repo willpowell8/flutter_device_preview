@@ -522,10 +522,10 @@ class _DevicePreviewState extends State<DevicePreview> {
                 decoration: BoxDecoration(
                   color: toolbar.scaffoldBackgroundColor,
                 ),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
+                child: Builder(
+                  builder: (context) {
                     final mediaQuery = MediaQuery.of(context);
-                    final isSmall = constraints.maxWidth < 700;
+                    final isSmall = false;
 
                     final borderRadius = isToolbarVisible
                         ? BorderRadius.only(
@@ -539,35 +539,13 @@ class _DevicePreviewState extends State<DevicePreview> {
                     final double bottomPanelOffset = isSmall ? mediaQuery.padding.bottom + 52 : 0;
                     return Stack(
                       children: <Widget>[
-                        if (isToolbarVisible && isSmall)
-                          Positioned(
-                            key: const Key('Small'),
-                            bottom: 0,
-                            right: 0,
-                            left: 0,
-                            child: DevicePreviewSmallLayout(
-                              slivers: widget.tools,
-                              maxMenuHeight: constraints.maxHeight * 0.5,
-                              scaffoldKey: scaffoldKey,
-                              onMenuVisibleChanged: (isVisible) => setState(() {
-                                _isToolPanelPopOverOpen = isVisible;
-                              }),
-                            ),
-                          ),
-                        if (isToolbarVisible && !isSmall)
-                          Positioned.fill(
-                            key: const Key('Large'),
-                            child: DervicePreviewLargeLayout(
-                              slivers: widget.tools,
-                            ),
-                          ),
                         AnimatedPositioned(
                           key: const Key('preview'),
                           duration: const Duration(milliseconds: 200),
                           left: 0,
-                          right: isToolbarVisible ? rightPanelOffset : 0,
+                          right: 0,
                           top: 0,
-                          bottom: isToolbarVisible ? bottomPanelOffset : 0,
+                          bottom: 0,
                           child: Theme(
                             data: background,
                             child: Container(
